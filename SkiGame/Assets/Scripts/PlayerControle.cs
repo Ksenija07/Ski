@@ -10,7 +10,8 @@ public class PlayerControle : MonoBehaviour
     [SerializeField] private KeyCode leftInput, rightInput;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
-    private Animator animator;
+    [SerializeField] private Takedamage takeDamage;
+   private Animator animator;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerControle : MonoBehaviour
     {
         bool isGrounded = Physics.Linecast(transform.position, groundCheck.position, groundLayer);
 
-        if(isGrounded)
+        if (isGrounded && !takeDamage.isHurt) 
         {
             if (Input.GetKey(leftInput) && transform.eulerAngles.y < 269)
             {
@@ -38,6 +39,8 @@ public class PlayerControle : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (takeDamage.isHurt)
+            return;
         animator.SetFloat("playerSpeed", currentSpeed);
         float angle = Mathf.Abs(180 - transform.eulerAngles.y);
         acceleration = Remap(0, 90, maxAcceleration, minAcceleration, angle);
