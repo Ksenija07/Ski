@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RaceTimer : MonoBehaviour
 {
+    [SerializeField] private float penaltyTime = 1;
+    [SerializeField] private Leaderboard leaderboard;
     bool timerRunning = false;
     private float raceTime = 0;
 
@@ -19,17 +21,21 @@ public class RaceTimer : MonoBehaviour
     private void OnEnable()
     {
         GameManager.RaceStart += StartRaceTimer;
-        GameManager.RaceFinish += StartRaceTimer;
+        GameManager.RaceFinish += StopRaceTimer;
+        GameManager.RacePenalty += Penalty;
+
     }
 
     private void OnDisable()
     {
         GameManager.RaceStart -= StartRaceTimer;
-        GameManager.RaceFinish -= StartRaceTimer;
+        GameManager.RaceFinish -= StopRaceTimer;
+        GameManager.RacePenalty -= Penalty;
     }
 
     private void StartRaceTimer()
     {
+        raceTime = 0;
         timerRunning = true;
         Debug.Log("race started");
     }
@@ -37,7 +43,17 @@ public class RaceTimer : MonoBehaviour
     private void StopRaceTimer()
     {
         timerRunning = false;
+        GameData.Instance.racesCompleted++;
+        leaderboard.AddRaceTime(raceTime);
+        Debug.Log(("Race finished! Race complited: " + GameData.Instance.racesCompleted));
         Debug.Log(("Race finished! Race time: " + raceTime));
     }
-    
+
+    private void Penalty()
+    {
+        raceTime += penaltyTime;
+        Debug.Log("penalty recieved!");
+    }
+
+
 }
