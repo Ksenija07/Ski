@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveMover : MonoBehaviour
+public class Snowball : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -11,5 +11,8 @@ public class MoveMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+    void OnCollisionEnter(Collision other)
+    {
+        Destroy(gameObject);
+    }
 }
