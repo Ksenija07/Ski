@@ -1323,6 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   penaltyTime: 1
+  leaderboard: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,6 +2401,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6564981166553636940, guid: 49ee210ac0510844d8da858708681a45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6564981166553636942, guid: 49ee210ac0510844d8da858708681a45, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2504,6 +2509,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6564981167525259486, guid: 49ee210ac0510844d8da858708681a45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6564981168225664803, guid: 49ee210ac0510844d8da858708681a45, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2559,6 +2568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1350986135}
   overlay: {fileID: 1350986134}
+  nextLevelIndex: 1
 --- !u!4 &1390799641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4586526161665663564, guid: 6715fe23802a58f42b3c57164d53786f, type: 3}
