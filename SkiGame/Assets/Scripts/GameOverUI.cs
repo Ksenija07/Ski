@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
-
+    [SerializeField] private Leaderboard leaderboard;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Image overlay;
     [SerializeField] private int nextLevelIndex = 1;
+
 
     private void Start()
     {
